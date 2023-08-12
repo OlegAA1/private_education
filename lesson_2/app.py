@@ -5,32 +5,24 @@ from web3 import Web3
 from sdk.data.models import Networks
 from sdk.client import Client
 
-from private_data import private_key1, private_key2, private_key3, proxy
+# from private_data import private_key1, private_key2, private_key3, proxy
 
 
 async def main():
-    client = Client(private_key=private_key1, network=Networks.Optimism, proxy=proxy)
+    # client = Client(private_key=private_key1, network=Networks.Optimism, proxy=proxy)
     # print(await client.wallet.balance(token_address='0xaf88d065e77c8cc2239327c5edb3a432268e5831'))
+    # balance = await client.wallet.balance()
+    # balance = await client.wallet.balance()
+    # balance = await client.wallet.balance()
+    client = Client(network=Networks.Ethereum)
+    private = client.account.key.hex()
     balance = await client.wallet.balance()
-    balance = await client.wallet.balance()
-    balance = await client.wallet.balance()
+    address = client.account.address
+    print(f'{private} : {address} : {balance} Wei / {balance.Ether} Ether')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+async def bruteforce():
+    await asyncio.gather(*(main() for _ in range(10)))
 
 
 
@@ -59,6 +51,8 @@ async def main():
     '''
 
 
+
 if __name__ == '__main__':
     loop = asyncio.new_event_loop()
-    loop.run_until_complete(main())
+    loop.run_until_complete(bruteforce())
+

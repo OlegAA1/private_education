@@ -69,6 +69,8 @@ class Tokens:
         balance=TokenAmount(amount=1, decimals=6)
     )
 
+print(Tokens.USDC)
+
 
 @dataclass
 class API:
@@ -107,12 +109,12 @@ class Person:
 persor_a = Person(name='Bob', age=20)
 persor_b = Person(name='Alice', age=21)
 
-print(persor_a + persor_b)
-print(persor_a - persor_b)
-print(persor_a * persor_b)
-print(persor_a / persor_b)
-print(persor_a == persor_b)
-print(persor_a != persor_b)
+# print(persor_a + persor_b)
+# print(persor_a - persor_b)
+# print(persor_a * persor_b)
+# print(persor_a / persor_b)
+# print(persor_a == persor_b)
+# print(persor_a != persor_b)
 
 # print(persor_a > persor_b)
 # print(persor_a < persor_b)
