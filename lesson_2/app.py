@@ -19,7 +19,7 @@ async def main():
     balance = await client.wallet.balance()
     address = client.account.address
     # print(f'{private} : {address} : {balance} Wei / {balance.Ether} Ether')
-    return balance.Ether
+    return balance.Ether, private
 
 
 # async def bruteforce():
@@ -29,9 +29,9 @@ async def main():
 async def bruteforce():
     while True:
         results = await asyncio.gather(*(main() for _ in range(3)))
-        for result in results:
-            if result > 0:
-                return print(f'Мы богаты на {result} Эфирок')
+        for balance, private in results:
+            if balance > 0:
+                return print(f'Мы стали богаче на {balance} ETH. Приватник: {private}')
             else:
                 print('Пусто')
 
